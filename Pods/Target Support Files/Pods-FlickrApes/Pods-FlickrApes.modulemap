@@ -1,0 +1,6 @@
+framework module Pods_FlickrApes {
+  umbrella header "Pods-FlickrApes-umbrella.h"
+
+  export *
+  module * { export * }
+}

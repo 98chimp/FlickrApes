@@ -86,6 +86,78 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB515C3E20BA2BF300FE383C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EB5CC61820BA20A20044F475 /* Main.storyboard */,
+				EB5CC61D20BA20A40044F475 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EB515C3F20BA2C0A00FE383C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB5CC61B20BA20A40044F475 /* Assets.xcassets */,
+				EB5CC62020BA20A40044F475 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EB515C4020BA2C1500FE383C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB5CC61620BA20A20044F475 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EB515C4120BA2C2900FE383C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EB515C4220BA2C3400FE383C /* Constants */,
+				EB515C4620BA2C8A00FE383C /* Extensions */,
+				EB515C4520BA2C8100FE383C /* Subclasses */,
+				EB515C4320BA2C3D00FE383C /* Services */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EB515C4220BA2C3400FE383C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		EB515C4320BA2C3D00FE383C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EB515C4420BA2C4800FE383C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EB515C4520BA2C8100FE383C /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		EB515C4620BA2C8A00FE383C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EB5CC60820BA20A20044F475 = {
 			isa = PBXGroup;
 			children = (
@@ -110,11 +182,11 @@
 			isa = PBXGroup;
 			children = (
 				EB5CC61420BA20A20044F475 /* AppDelegate.swift */,
-				EB5CC61620BA20A20044F475 /* ViewController.swift */,
-				EB5CC61820BA20A20044F475 /* Main.storyboard */,
-				EB5CC61B20BA20A40044F475 /* Assets.xcassets */,
-				EB5CC61D20BA20A40044F475 /* LaunchScreen.storyboard */,
-				EB5CC62020BA20A40044F475 /* Info.plist */,
+				EB515C4120BA2C2900FE383C /* Utilities */,
+				EB515C4420BA2C4800FE383C /* Models */,
+				EB515C4020BA2C1500FE383C /* View Controllers */,
+				EB515C3E20BA2BF300FE383C /* Storyboards */,
+				EB515C3F20BA2C0A00FE383C /* Resources */,
 			);
 			path = FlickrApes;
 			sourceTree = "<group>";
@@ -456,7 +528,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X85PLZ26L;
 				INFOPLIST_FILE = FlickrApes/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.98chimp.FlickrApes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -472,7 +547,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X85PLZ26L;
 				INFOPLIST_FILE = FlickrApes/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.98chimp.FlickrApes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -489,7 +567,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X85PLZ26L;
 				INFOPLIST_FILE = FlickrApesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.98chimp.FlickrApesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -507,7 +589,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X85PLZ26L;
 				INFOPLIST_FILE = FlickrApesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.98chimp.FlickrApesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

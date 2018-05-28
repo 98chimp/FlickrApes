@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController
 {
     typealias cells = Constants.Identifiers.Cells
+    typealias segues = Constants.Identifiers.Segues
 
     // MARK: - Outlets
     @IBOutlet fileprivate weak var photosTableView: UITableView!
@@ -29,17 +30,27 @@ class MainViewController: UIViewController
     // MARK: - Helpers
     fileprivate func getPublicPhotos(with tags: String = "apes")
     {
-        WebService.searchPhotos(for: "apes") { [weak self] (photos) in
+        WebService.searchPhotos(for: tags) { [weak self] (photos) in
             
             self?.photos = photos
-            self?.photosTableView.reloadSections(IndexSet(integersIn: 0...0), with: .top)
+            self?.reloadTableView()
         }
     }
-
+    
+    fileprivate func reloadTableView()
+    {
+        photosTableView.reloadSections(IndexSet(integersIn: 0...0), with: .top)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-
+        if segue.identifier == segues.toPhotoDetail
+        {
+            let destinationVC = segue.destination as? DetailTableViewController
+            let photoToPass = photos[selectedIndexPath.row]
+            destinationVC?.passedPhoto = photoToPass
+        }
     }
 }
 
@@ -52,7 +63,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cells.photoCell, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cells.photoCell, for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
+        
+        let photo = photos[indexPath.row]
+        cell.configure(with: photo)
         
         return cell
     }
@@ -60,6 +74,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         selectedIndexPath = indexPath
+        performSegue(withIdentifier: segues.toPhotoDetail, sender: nil)
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return photoCellHeight
     }
 }

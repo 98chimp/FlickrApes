@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().shadowImage = UIImage.with(color: .faOrange)
         UINavigationBar.appearance().barTintColor = .faOrange
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white , NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20.0, weight: .thin)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                                                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0, weight: .thin)]
     }
 }
 

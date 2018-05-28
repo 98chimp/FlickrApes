@@ -14,6 +14,8 @@ func execute(after delay:Double, closure:@escaping ()->())
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
+let photoCellHeight: CGFloat = 100.0
+
 struct Constants
 {
     struct Storyboards
@@ -40,6 +42,7 @@ struct Constants
         {
             static let toMainScreen = "toMainScreen"
             static let toIntroScreen = "toIntroScreen"
+            static let toPhotoDetail = "toPhotoDetail"
         }
     }
     
@@ -58,7 +61,7 @@ struct Constants
         static let description = "description"
         static let dateTaken = "date_taken"
         static let datePublished = "published"
-        static let tags = "tags"        
+        static let tags = "tags"
     }
     
     struct Web

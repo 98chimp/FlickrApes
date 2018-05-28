@@ -17,9 +17,9 @@ class FlickrPhoto
     var author: String?
     var authorID: String?
     var link: String?
-    var media: String?
     var description: String?
     var tags: String?
+    var media: [String: Any]?
     var dateTaken: Date?
     var datePublished: Date?
     
@@ -33,9 +33,12 @@ class FlickrPhoto
         photo.authorID = dict[keys.authorID] as? String
         photo.description = dict[keys.description] as? String
         photo.link = dict[keys.link] as? String
-        photo.media = dict[keys.media] as? String
-        photo.dateTaken = dict[keys.dateTaken] as? Date
-        photo.datePublished = dict[keys.datePublished] as? Date
+        photo.tags = dict[keys.tags] as? String
+        photo.media = dict[keys.media] as? [String: Any]
+        let dateTakenString = dict[keys.dateTaken] as? String
+        photo.dateTaken = dateTakenString?.toDate()
+        let datePublishedString = dict[keys.datePublished] as? String
+        photo.datePublished = datePublishedString?.toDate()
         
         return photo
     }

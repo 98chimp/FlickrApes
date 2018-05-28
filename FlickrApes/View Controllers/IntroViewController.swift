@@ -13,20 +13,6 @@ class IntroViewController: UIViewController
     // MARK: - Outlets
     @IBOutlet fileprivate weak var okayButton: UIButton!
     
-    // MARK: - Lifecycle
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        configureView()
-    }
-    
-    // MARK: - Helpers
-    fileprivate func configureView()
-    {
-//        okayButton.layer.cornerRadius = 5.0
-//        okayButton.layer.
-    }
-    
     // MARK: - Actions
     @IBAction fileprivate func okayButtonTapped(_ sender: UIButton)
     {

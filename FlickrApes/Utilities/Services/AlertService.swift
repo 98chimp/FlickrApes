@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class AlertService
 {    
@@ -30,7 +31,7 @@ class AlertService
     
     static func prepareMissingImageAlert() -> UIAlertController
     {
-        let alert = UIAlertController(title: "Uh, oh!", message: "Seems like something went wrong fetching the image you requested.\nPlease try your search again later.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Uh, oh!", message: "Seems like something went wrong while fetching the image you requested.\nPlease try your search again later.", preferredStyle: .alert)
         alert.addAction(withTitle: "Okay", style: .cancel, handler: nil)
         alert.view.tintColor = .faOrange
         
@@ -45,6 +46,7 @@ class AlertService
         
         return alert
     }
+    
     static func prepareImageSaveSuccessAlert() -> UIAlertController
     {
         let alert = UIAlertController(title: "Woohoo!", message: "Seems like everything went smoothly!\nOn to saving the next photo.", preferredStyle: .alert)
@@ -54,4 +56,42 @@ class AlertService
         return alert
     }
 
+    static func prepareEmailComposerFinishedAlert(with result: MFMailComposeResult, and error: Error?) -> UIAlertController
+    {
+        var message = emptyString
+        var title = emptyString
+        
+        switch result {
+        case .sent:
+            title = "Woohoo!"
+            message = "Seems like your email was sent smoothly!\nRembmer, sharing is caring!"
+            
+        case .saved:
+            title = "Okay, got it!"
+            message = "You're not ready to send that email just yet.\nWhen you are, remember to access your draft message from your favourite email app."
+
+        case .failed:
+            title = "Uh, oh!"
+            message = "Seems like something went wrong while sending your email message.\n\n\(error?.localizedDescription ?? "unknown error")\nnPlease try sending it again later."
+            
+        default:
+            title = "Aye aye!"
+            message = "Your draft message was deleted.\nNothing to send."
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(withTitle: "Okay", style: .cancel, handler: nil)
+        alert.view.tintColor = .faOrange
+        
+        return alert
+    }
+    
+    static func prepareEmailCannotBeSentAlert() -> UIAlertController
+    {
+        let alert = UIAlertController(title: "Whoops!", message: "Seems like you cannot send emails on this device.\nPlease make sure your device is set up correctly to send and receive emails and try again.", preferredStyle: .alert)
+        alert.addAction(withTitle: "Okay", style: .cancel, handler: nil)
+        alert.view.tintColor = .faOrange
+        
+        return alert
+    }
 }

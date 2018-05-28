@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import SafariServices
+import MessageUI
 
 class DetailTableViewController: UITableViewController
 {
@@ -25,6 +26,7 @@ class DetailTableViewController: UITableViewController
     // MARK: - Properties
     public var passedPhoto: FlickrPhoto?
     fileprivate var selectedImage: UIImage?
+    fileprivate var selectedImageData: Data?
     fileprivate let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle
@@ -56,8 +58,11 @@ class DetailTableViewController: UITableViewController
     
     fileprivate func setSelectedImage(with url: URL)
     {
-        guard let data = try? Data(contentsOf: url) else { return }
-        selectedImage = UIImage(data: data)
+        if let data = try? Data(contentsOf: url)
+        {
+            selectedImageData = data
+            selectedImage = UIImage(data: data)
+        }
     }
     
     fileprivate func open(_ link: String)
@@ -74,12 +79,12 @@ class DetailTableViewController: UITableViewController
     fileprivate func showOptions()
     {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(withTitle: "Save Photo in Image Gallery", style: .default) { [weak self] in
+        actionSheet.addAction(withTitle: "Save Photo in Photo Library", style: .default) { [weak self] in
             
             self?.saveImageToPhotoLibrary()
         }
         
-        actionSheet.addAction(withTitle: "Open Photo in Image Browser", style: .default) { [weak self] in
+        actionSheet.addAction(withTitle: "Open Photo Library", style: .default) { [weak self] in
             
             self?.openImageInSystemBrowser()
         }
@@ -90,6 +95,7 @@ class DetailTableViewController: UITableViewController
         }
         
         actionSheet.addAction(withTitle: "Cancel", style: .cancel, handler: nil)
+        actionSheet.view.tintColor = .faOrange
         
         present(actionSheet, animated: true)
     }
@@ -110,9 +116,7 @@ class DetailTableViewController: UITableViewController
     {
         if let _ = selectedImage
         {
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .savedPhotosAlbum
-            present(imagePicker, animated: true)
+            showPhotoLibrary()
         }
         else
         {
@@ -122,15 +126,21 @@ class DetailTableViewController: UITableViewController
     
     fileprivate func sharePhotoByEmail()
     {
-        if let image = selectedImage
+        if let imageData = selectedImageData
         {
-            print(image.size)
-            print("share button tapped")
+            sendEmail(with: imageData)
         }
         else
         {
             showMissingImageAlert()
         }
+    }
+    
+    fileprivate func showPhotoLibrary()
+    {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .savedPhotosAlbum
+        present(imagePicker, animated: true)
     }
     
     fileprivate func showMissingImageAlert()
@@ -160,6 +170,7 @@ class DetailTableViewController: UITableViewController
     }
 }
 
+// MARK: - Image Picker Delegate
 extension DetailTableViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
@@ -175,7 +186,52 @@ extension DetailTableViewController: UINavigationControllerDelegate, UIImagePick
         }
         else
         {
-            present(AlertService.prepareImageSaveSuccessAlert(), animated: true)
+            let alert = AlertService.prepareImageSaveSuccessAlert()
+            
+            alert.addAction(withTitle: "Go to Photo Library", style: .default) { [weak self] in
+                
+                self?.showPhotoLibrary()
+            }
+            
+            present(alert, animated: true)
+        }
+    }
+}
+
+extension DetailTableViewController: MFMailComposeViewControllerDelegate
+{
+    fileprivate func sendEmail(with imageData: Data)
+    {
+        if MFMailComposeViewController.canSendMail()
+        {
+            let emailVC = MFMailComposeViewController()
+            emailVC.mailComposeDelegate = self;
+            emailVC.setSubject("Look!")
+            emailVC.setMessageBody("[Your message goes here]", isHTML: false)
+            emailVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "imageName.png")
+            emailVC.navigationBar.isTranslucent = false
+            emailVC.navigationBar.tintColor = .white
+            emailVC.setNeedsStatusBarAppearanceUpdate()
+            
+            present(emailVC, animated: true)
+        }
+        else
+        {
+            present(AlertService.prepareEmailCannotBeSentAlert(), animated: true)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        let alert = AlertService.prepareEmailComposerFinishedAlert(with: result, and: error)
+        
+        switch result {
+        case .cancelled, .saved:
+            controller.dismiss(animated: true)
+            fallthrough
+          
+        default:
+            present(alert, animated: true)
         }
     }
 }

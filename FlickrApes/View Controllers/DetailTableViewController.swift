@@ -23,8 +23,9 @@ class DetailTableViewController: UITableViewController
     @IBOutlet fileprivate weak var tagsLabel: UILabel!
     
     // MARK: - Properties
-    var passedPhoto: FlickrPhoto?
-    var selectedImage: UIImage?
+    public var passedPhoto: FlickrPhoto?
+    fileprivate var selectedImage: UIImage?
+    fileprivate let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle
     override func viewDidLoad()
@@ -97,8 +98,6 @@ class DetailTableViewController: UITableViewController
     {
         if let image = selectedImage
         {
-            print(image.size)
-            print("save button tapped")
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
         else
@@ -109,10 +108,11 @@ class DetailTableViewController: UITableViewController
     
     fileprivate func openImageInSystemBrowser()
     {
-        if let image = selectedImage
+        if let _ = selectedImage
         {
-            print(image.size)
-            print("open button tapped")
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .savedPhotosAlbum
+            present(imagePicker, animated: true)
         }
         else
         {
@@ -162,6 +162,11 @@ class DetailTableViewController: UITableViewController
 
 extension DetailTableViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        picker.dismiss(animated: true)
+    }
+    
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer)
     {
         if let error = error

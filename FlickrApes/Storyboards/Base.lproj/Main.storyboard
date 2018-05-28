@@ -141,6 +141,9 @@
                                 <segment title="Capture Date"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="sortingSegmentedControlTapped:" destination="NOi-3v-gGy" eventType="valueChanged" id="Fod-ax-5Fl"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>

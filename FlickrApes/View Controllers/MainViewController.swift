@@ -42,6 +42,20 @@ class MainViewController: UIViewController
         photosTableView.reloadSections(IndexSet(integersIn: 0...0), with: .top)
     }
     
+    fileprivate func sortPhotos(with selection: Int = 0)
+    {
+        switch selection {
+        case 0:
+            photos = photos.sorted { $0.datePublished?.compare($1.datePublished!) == .orderedDescending }
+
+        default:
+            photos = photos.sorted { $0.dateTaken?.compare($1.dateTaken!) == .orderedDescending }
+
+        }
+        
+        reloadTableView()
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -52,6 +66,13 @@ class MainViewController: UIViewController
             destinationVC?.passedPhoto = photoToPass
         }
     }
+    
+    // MARK: - Actions
+    @IBAction func sortingSegmentedControlTapped(_ sender: UISegmentedControl)
+    {
+        sortPhotos(with: sender.selectedSegmentIndex)
+    }
+    
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate

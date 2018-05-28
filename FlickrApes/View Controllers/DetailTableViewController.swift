@@ -76,10 +76,7 @@ class DetailTableViewController: UITableViewController
         
         switch indexPath.row {
         case 8:
-            if let photoLink = passedPhoto?.link
-            {
-                open(photoLink)
-            }
+            if let photoLink = passedPhoto?.link { open(photoLink) }
             
         default:
             break

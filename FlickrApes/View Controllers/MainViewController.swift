@@ -83,3 +83,21 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate
         return photoCellHeight
     }
 }
+
+extension MainViewController: UISearchBarDelegate
+{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        if searchBar.text == ""
+        {
+            print("Uh oh! Please make sure you enter some text first")
+        }
+        else
+        {
+            guard let tags = searchBar.text?.replacingOccurrences(of: " ", with: ", ") else { return }
+            getPublicPhotos(with: tags)
+            view.endEditing(true)
+            searchBar.text = ""
+        }
+    }
+}

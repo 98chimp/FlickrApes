@@ -21,7 +21,7 @@ class DetailTableViewController: UITableViewController
     @IBOutlet fileprivate weak var tagsLabel: UILabel!
     
     // MARK: - Properties
-    var passedPhoto: Photo?
+    var passedPhoto: FlickrPhoto?
     
     // MARK: - Lifecycle
     override func viewDidLoad()

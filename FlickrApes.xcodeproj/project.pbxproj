@@ -24,7 +24,8 @@
 		EB5CC61F20BA20A40044F475 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5CC61D20BA20A40044F475 /* LaunchScreen.storyboard */; };
 		EB5CC62A20BA20A40044F475 /* FlickrApesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5CC62920BA20A40044F475 /* FlickrApesTests.swift */; };
 		EBED7B5F20BB68B7008F642F /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B5E20BB68B7008F642F /* DetailTableViewController.swift */; };
-		EBED7B6120BB70A2008F642F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6020BB70A2008F642F /* Photo.swift */; };
+		EBED7B6120BB70A2008F642F /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6020BB70A2008F642F /* FlickrPhoto.swift */; };
+		EBED7B6320BB743E008F642F /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6220BB743E008F642F /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,8 @@
 		EB5CC62920BA20A40044F475 /* FlickrApesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrApesTests.swift; sourceTree = "<group>"; };
 		EB5CC62B20BA20A40044F475 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBED7B5E20BB68B7008F642F /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
-		EBED7B6020BB70A2008F642F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		EBED7B6020BB70A2008F642F /* FlickrPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
+		EBED7B6220BB743E008F642F /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				EB515C4820BB22D800FE383C /* AlertService.swift */,
 				EB515C4720BB22D800FE383C /* SessionService.swift */,
+				EBED7B6220BB743E008F642F /* WebService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -166,7 +169,7 @@
 		EB515C4420BA2C4800FE383C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EBED7B6020BB70A2008F642F /* Photo.swift */,
+				EBED7B6020BB70A2008F642F /* FlickrPhoto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,12 +358,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlickrApes/Pods-FlickrApes-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +396,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBED7B6120BB70A2008F642F /* Photo.swift in Sources */,
+				EBED7B6320BB743E008F642F /* WebService.swift in Sources */,
+				EBED7B6120BB70A2008F642F /* FlickrPhoto.swift in Sources */,
 				EB515C5220BB289E00FE383C /* MainViewController.swift in Sources */,
 				EBED7B5F20BB68B7008F642F /* DetailTableViewController.swift in Sources */,
 				EB515C4E20BB288200FE383C /* InitialViewController.swift in Sources */,

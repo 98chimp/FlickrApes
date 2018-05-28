@@ -13,17 +13,27 @@ class MainViewController: UIViewController
     typealias cells = Constants.Identifiers.Cells
 
     // MARK: - Outlets
-    @IBOutlet weak var photosTableView: UITableView!
+    @IBOutlet fileprivate weak var photosTableView: UITableView!
     
     // MARK: - Properties
-    fileprivate var photos = [Photo]()
+    fileprivate var photos = [FlickrPhoto]()
     fileprivate var selectedIndexPath = IndexPath()
     
     // MARK: - Lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        getPublicPhotos()
+    }
+    
+    // MARK: - Helpers
+    fileprivate func getPublicPhotos(with tags: String = "apes")
+    {
+        WebService.searchPhotos(for: "apes") { [weak self] (photos) in
+            
+            self?.photos = photos
+            self?.photosTableView.reloadSections(IndexSet(integersIn: 0...0), with: .top)
+        }
     }
 
     // MARK: - Navigation
@@ -37,7 +47,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return photos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell

@@ -18,24 +18,15 @@ struct Constants
 {
     struct Storyboards
     {
-        static let initial = "Initial"
-        static let signin = "Signin"
-        static let welcome = "Welcome"
         static let main = "Main"
     }
     
     struct ViewControllers
     {
-        static let initialVC = "InitialViewController"
-        static let singinTVC = "SigninTableViewController"
-        static let signupTVC = "SignupTableViewController"
-        static let forgotPasswordTVC = "ForgotPasswordTableViewController"
-        static let welcome1VC = "Welcome1VC"
-        static let welcome2VC = "Welcome2VC"
-        static let welcome3VC = "Welcome3VC"
-        static let welcome4VC = "Welcome4VC"
-        static let mainVC = "MainViewController"
-        static let newPostVC = "NewPostViewController"
+        static let initialVC = "Initial View Controller"
+        static let introVC = "Intro View Controller"
+        static let mainVC = "Main View Controller"
+        static let detailVC = "Photo Detail View Controller"
     }
 
     struct Identifiers
@@ -57,49 +48,30 @@ struct Constants
         static let hasLaunchedBefore = "hasLaunchedBefore"
     }
     
-    struct Models
+    struct Photo
     {
-        struct User
-        {
-            static let firstName = "firstName"
-            static let lastName = "lastName"
-            static let birthDate = "birthDate"
-            static let bofHandle = "bofHandle"
-            static let email = "email"
-            static let password = "password"
-            static let token = "token"
-        }
-        
-        struct Post
-        {
-            static let content = "content"
-            static let poster = "poster"
-        }
+        static let title = "title"
+        static let author = "author"
+        static let authorID = "author_id"
+        static let link = "link"
+        static let media = "media"
+        static let description = "description"
+        static let dateTaken = "date_taken"
+        static let datePublished = "published"
+        static let tags = "tags"        
     }
     
-    struct AccessibilityLabels
+    struct Web
     {
-        static let email = "email"
-        static let password = "password"
-        static let firstName = "firstName"
-        static let lastName = "lastName"
-        static let passwordConfirm = "passwordConfirm"
-        static let date = "date"
-        static let imageCell = "imageCell"
-        static let singinButton = "signinButton"
-        static let signupButton = "signupButton"
-        static let learnButton = "learnButton"
-        static let forgotButton = "forgotButton"
-        static let cancelButton = "cancelButton"
-        static let skipButton = "skipButton"
-        static let doneButton = "doneButton"
-        static let wecomeImage = "welcomeImage"
-        static let welcomeLabel = "welcomeLabel"
-        static let signupImage = "signupImage"
-        static let signupLabel = "signupLabel"
-        static let inviteImage = "inviteImage"
-        static let inviteLabel = "inviteLabel"
-        static let bofImage = "bofImage"
-        static let bofLabel = "bofLabel"
+        struct Paths
+        {
+            static let publicPhotos = "https://api.flickr.com/services/feeds/photos_public.gne"
+        }
+        
+        struct Keys
+        {
+            static let format = "format"
+            static let tags = "tags"
+        }
     }
 }

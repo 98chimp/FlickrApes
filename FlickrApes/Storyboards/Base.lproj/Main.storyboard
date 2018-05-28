@@ -15,7 +15,7 @@
         <!--Initial View Controller-->
         <scene sceneID="ihg-7f-6Kc">
             <objects>
-                <viewController storyboardIdentifier="InitialViewController" id="qpw-Xd-DfI" customClass="InitialViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Initial View Controller" id="qpw-Xd-DfI" customClass="InitialViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vGq-Xh-NkE"/>
                         <viewControllerLayoutGuide type="bottom" id="xph-tB-QoB"/>
@@ -51,7 +51,7 @@
         <!--Main View Controller-->
         <scene sceneID="fTY-c1-A6d">
             <objects>
-                <viewController id="NOi-3v-gGy" customClass="MainViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main View Controller" id="NOi-3v-gGy" customClass="MainViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EcN-sp-KkL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,7 +141,7 @@
         <!--Photo Details-->
         <scene sceneID="UBZ-21-fKT">
             <objects>
-                <tableViewController title="Photo Details" id="tfh-zC-YKI" customClass="DetailTableViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Photo Detail View Controller" title="Photo Details" id="tfh-zC-YKI" customClass="DetailTableViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="E62-d1-vvk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,7 +402,7 @@
         <!--Intro View Controller-->
         <scene sceneID="Ljg-fu-QFk">
             <objects>
-                <viewController id="dPt-sp-Kbp" customClass="IntroViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Intro View Controller" id="dPt-sp-Kbp" customClass="IntroViewController" customModule="FlickrApes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bBd-SB-v6X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

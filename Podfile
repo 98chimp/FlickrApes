@@ -4,7 +4,7 @@ target 'FlickrApes' do
 
   use_frameworks!
 
-  pod 'AFNetworking','~> 2.0'
+  pod 'Alamofire', '~> 4.4'
   pod 'SDWebImage', '~> 4.2'
 
   target 'FlickrApesTests' do

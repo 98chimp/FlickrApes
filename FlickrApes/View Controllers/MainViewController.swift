@@ -32,8 +32,15 @@ class MainViewController: UIViewController
     {
         WebService.searchPhotos(for: tags) { [weak self] (photos) in
             
-            self?.photos = photos
-            self?.reloadTableView()
+            if photos.isEmpty
+            {
+                self?.present(AlertService.prepareEmptyPhotosResponse(), animated: true, completion: nil)
+            }
+            else
+            {
+                self?.photos = photos
+                self?.reloadTableView()
+            }
         }
     }
     
@@ -111,7 +118,7 @@ extension MainViewController: UISearchBarDelegate
     {
         if searchBar.text == ""
         {
-            print("Uh oh! Please make sure you enter some text first")
+            present(AlertService.prepareEmptySearchTermAlert(), animated: true, completion: nil)
         }
         else
         {

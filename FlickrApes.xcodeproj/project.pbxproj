@@ -29,6 +29,7 @@
 		EBED7B6720BC3E64008F642F /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6620BC3E64008F642F /* PhotoTableViewCell.swift */; };
 		EBED7B6A20BC5C8E008F642F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6920BC5C8E008F642F /* Date+Extensions.swift */; };
 		EBED7B6C20BC5EF9008F642F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6B20BC5EF9008F642F /* String+Extensions.swift */; };
+		EBED7B6E20BC74B6008F642F /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6D20BC74B6008F642F /* UIAlertController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		EBED7B6620BC3E64008F642F /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoTableViewCell.swift; path = "FlickrApes/New Group/PhotoTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		EBED7B6920BC5C8E008F642F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		EBED7B6B20BC5EF9008F642F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		EBED7B6D20BC74B6008F642F /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				EB515C5B20BB4F5400FE383C /* UIImage+Extensions.swift */,
 				EBED7B6920BC5C8E008F642F /* Date+Extensions.swift */,
 				EBED7B6B20BC5EF9008F642F /* String+Extensions.swift */,
+				EBED7B6D20BC74B6008F642F /* UIAlertController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBED7B6E20BC74B6008F642F /* UIAlertController+Extensions.swift in Sources */,
 				EBED7B6320BB743E008F642F /* WebService.swift in Sources */,
 				EBED7B6120BB70A2008F642F /* FlickrPhoto.swift in Sources */,
 				EB515C5220BB289E00FE383C /* MainViewController.swift in Sources */,

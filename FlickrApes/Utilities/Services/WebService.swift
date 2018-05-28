@@ -21,14 +21,15 @@ class WebService
         
         Alamofire.request(paths.publicPhotos, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
             
+            var flickrPhotos = [FlickrPhoto]()
+            
             let jsonString = response.value
             let cleanedUpJSONString = jsonString?.dropFirst(15).dropLast()
             guard let data = cleanedUpJSONString?.data(using: .utf8),
-                  let photosDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                  let rawPhotos = photosDictionary?["items"] as? [[String: Any]]
-            else { return }
+                let photosDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                let rawPhotos = photosDictionary?["items"] as? [[String: Any]]
+                else { return }
             
-            var flickrPhotos = [FlickrPhoto]()
             for photoDict in rawPhotos
             {
                 let photo = FlickrPhoto().parse(with: photoDict)

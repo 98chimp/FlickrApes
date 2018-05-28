@@ -67,9 +67,83 @@ class DetailTableViewController: UITableViewController
         safariVC.modalTransitionStyle = .coverVertical
         safariVC.preferredBarTintColor = .faOrange
         
-        present(safariVC, animated: true, completion: nil)
+        present(safariVC, animated: true)
     }
-
+    
+    fileprivate func showOptions()
+    {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(withTitle: "Save Photo in Image Gallery", style: .default) { [weak self] in
+            
+            self?.saveImageToPhotoLibrary()
+        }
+        
+        actionSheet.addAction(withTitle: "Open Photo in Image Browser", style: .default) { [weak self] in
+            
+            self?.openImageInSystemBrowser()
+        }
+        
+        actionSheet.addAction(withTitle: "Share Photo by Email", style: .default) { [weak self] in
+            
+            self?.sharePhotoByEmail()
+        }
+        
+        actionSheet.addAction(withTitle: "Cancel", style: .cancel, handler: nil)
+        
+        present(actionSheet, animated: true)
+    }
+    
+    fileprivate func saveImageToPhotoLibrary()
+    {
+        if let image = selectedImage
+        {
+            print(image.size)
+            print("save button tapped")
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        else
+        {
+            showMissingImageAlert()
+        }
+    }
+    
+    fileprivate func openImageInSystemBrowser()
+    {
+        if let image = selectedImage
+        {
+            print(image.size)
+            print("open button tapped")
+        }
+        else
+        {
+            showMissingImageAlert()
+        }
+    }
+    
+    fileprivate func sharePhotoByEmail()
+    {
+        if let image = selectedImage
+        {
+            print(image.size)
+            print("share button tapped")
+        }
+        else
+        {
+            showMissingImageAlert()
+        }
+    }
+    
+    fileprivate func showMissingImageAlert()
+    {
+        present(AlertService.prepareMissingImageAlert(), animated: true, completion: nil)
+    }
+    
+    // MARK: - Actions
+    @IBAction func optionsButtonTapped(_ sender: UIBarButtonItem)
+    {
+        showOptions()
+    }
+    
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
@@ -83,5 +157,20 @@ class DetailTableViewController: UITableViewController
         }
         
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+}
+
+extension DetailTableViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
+{
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer)
+    {
+        if let error = error
+        {
+            present(AlertService.prepareImageSaveErrorAlert(with: error), animated: true)
+        }
+        else
+        {
+            present(AlertService.prepareImageSaveSuccessAlert(), animated: true)
+        }
     }
 }

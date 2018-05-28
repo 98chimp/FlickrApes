@@ -400,7 +400,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Photo Details" id="fVv-a5-S4r">
-                        <barButtonItem key="rightBarButtonItem" image="more" id="qHn-Fs-HqJ"/>
+                        <barButtonItem key="rightBarButtonItem" image="more" id="qHn-Fs-HqJ">
+                            <connections>
+                                <action selector="optionsButtonTapped:" destination="tfh-zC-YKI" id="pCt-g2-fK5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

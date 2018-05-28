@@ -34,7 +34,7 @@ class MainViewController: UIViewController
             
             if photos.isEmpty
             {
-                self?.present(AlertService.prepareEmptyPhotosResponse(), animated: true, completion: nil)
+                self?.present(AlertService.prepareEmptyPhotosResponseAlert(), animated: true, completion: nil)
             }
             else
             {
@@ -49,7 +49,7 @@ class MainViewController: UIViewController
         photosTableView.reloadSections(IndexSet(integersIn: 0...0), with: .top)
     }
     
-    fileprivate func sortPhotos(with selection: Int = 0)
+    fileprivate func sortPhotos(for selection: Int = 0)
     {
         switch selection {
         case 0:
@@ -77,7 +77,7 @@ class MainViewController: UIViewController
     // MARK: - Actions
     @IBAction func sortingSegmentedControlTapped(_ sender: UISegmentedControl)
     {
-        sortPhotos(with: sender.selectedSegmentIndex)
+        sortPhotos(for: sender.selectedSegmentIndex)
     }
     
 }

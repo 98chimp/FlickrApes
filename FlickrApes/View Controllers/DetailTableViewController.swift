@@ -50,7 +50,7 @@ class DetailTableViewController: UITableViewController
         captureDateLabel.text = passedPhoto?.dateTaken?.longString()
         publishDateLabel.text = passedPhoto?.datePublished?.longString()
         descriptionLabel.attributedText = passedPhoto?.description?.htmlToAttibutedString()
-        tagsLabel.text = passedPhoto?.tags?.replacingOccurrences(of: " ", with: "\t")
+        tagsLabel.text = passedPhoto?.tags?.replacingOccurrences(of: space, with: tagSeparator)
     }
     
     fileprivate func setSelectedImage(with url: URL)

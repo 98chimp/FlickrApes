@@ -15,6 +15,11 @@ func execute(after delay:Double, closure:@escaping ()->())
 }
 
 let photoCellHeight: CGFloat = 100.0
+let emptyString = ""
+let space = " "
+let tagSeparator = "  |  "
+let comma = ", "
+let apes = "apes"
 
 struct Constants
 {

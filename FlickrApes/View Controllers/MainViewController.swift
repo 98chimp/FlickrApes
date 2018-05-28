@@ -28,7 +28,7 @@ class MainViewController: UIViewController
     }
     
     // MARK: - Helpers
-    fileprivate func getPublicPhotos(with tags: String = "apes")
+    fileprivate func getPublicPhotos(with tags: String = apes)
     {
         WebService.searchPhotos(for: tags) { [weak self] (photos) in
             
@@ -116,16 +116,16 @@ extension MainViewController: UISearchBarDelegate
 {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-        if searchBar.text == ""
+        if searchBar.text == emptyString
         {
             present(AlertService.prepareEmptySearchTermAlert(), animated: true, completion: nil)
         }
         else
         {
-            guard let tags = searchBar.text?.replacingOccurrences(of: " ", with: ", ") else { return }
+            guard let tags = searchBar.text?.replacingOccurrences(of: space, with: comma) else { return }
             getPublicPhotos(with: tags)
             view.endEditing(true)
-            searchBar.text = ""
+            searchBar.text = emptyString
         }
     }
 }

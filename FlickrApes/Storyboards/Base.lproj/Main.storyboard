@@ -145,6 +145,11 @@
                                 <action selector="sortingSegmentedControlTapped:" destination="NOi-3v-gGy" eventType="valueChanged" id="Fod-ax-5Fl"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="6n3-EZ-8NS">
+                            <connections>
+                                <action selector="refreshTable:" destination="NOi-3v-gGy" id="l8S-tg-rCU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="photosTableView" destination="JwA-Us-k3H" id="IbW-oj-QFU"/>
@@ -420,7 +425,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brI-U9-Xm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2477.5999999999999" y="-170.46476761619192"/>
+            <point key="canvasLocation" x="2695" y="-122"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="Ljg-fu-QFk">

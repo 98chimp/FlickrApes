@@ -209,9 +209,7 @@ extension DetailTableViewController: MFMailComposeViewControllerDelegate
             emailVC.setSubject("Look!")
             emailVC.setMessageBody("[Your message goes here]", isHTML: false)
             emailVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "imageName.png")
-            emailVC.navigationBar.isTranslucent = false
             emailVC.navigationBar.tintColor = .white
-            emailVC.setNeedsStatusBarAppearanceUpdate()
             
             present(emailVC, animated: true)
         }
@@ -224,14 +222,7 @@ extension DetailTableViewController: MFMailComposeViewControllerDelegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
         let alert = AlertService.prepareEmailComposerFinishedAlert(with: result, and: error)
-        
-        switch result {
-        case .cancelled, .saved:
-            controller.dismiss(animated: true)
-            fallthrough
-          
-        default:
-            present(alert, animated: true)
-        }
+        controller.dismiss(animated: true)
+        present(alert, animated: true)
     }
 }

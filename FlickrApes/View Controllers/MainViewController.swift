@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import M13ProgressSuite
 
 class MainViewController: UIViewController
 {
@@ -19,19 +20,31 @@ class MainViewController: UIViewController
     // MARK: - Properties
     fileprivate var photos = [FlickrPhoto]()
     fileprivate var selectedIndexPath = IndexPath()
-    
+    fileprivate var hud: M13ProgressHUD?
+    fileprivate let refreshControl = UIRefreshControl()
+    fileprivate var tags = apes
+
     // MARK: - Lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        configureHUD()
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
         getPublicPhotos()
     }
     
-    // MARK: - Helpers
-    fileprivate func getPublicPhotos(with tags: String = apes)
+    // MARK: - Networking
+    @objc fileprivate func getPublicPhotos()
     {
+        hud?.show(true)
+        
         WebService.searchPhotos(for: tags) { [weak self] (photos) in
             
+            self?.hud?.hide(true)
             if photos.isEmpty
             {
                 self?.present(AlertService.prepareEmptyPhotosResponseAlert(), animated: true, completion: nil)
@@ -42,6 +55,14 @@ class MainViewController: UIViewController
                 self?.reloadTableView()
             }
         }
+    }
+    
+    // MARK: - Helpers
+    fileprivate func configureHUD()
+    {
+        hud = M13ProgressHUD(progressView: M13ProgressViewRing())
+        hud?.configure()
+        view.addSubview(hud!)
     }
     
     fileprivate func reloadTableView()
@@ -80,6 +101,10 @@ class MainViewController: UIViewController
         sortPhotos(for: sender.selectedSegmentIndex)
     }
     
+    @IBAction func refreshTable(_ sender: UIBarButtonItem)
+    {
+        getPublicPhotos()
+    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate
@@ -123,7 +148,8 @@ extension MainViewController: UISearchBarDelegate
         else
         {
             guard let tags = searchBar.text?.replacingOccurrences(of: space, with: comma) else { return }
-            getPublicPhotos(with: tags)
+            self.tags = tags
+            getPublicPhotos()
             view.endEditing(true)
             searchBar.text = emptyString
         }

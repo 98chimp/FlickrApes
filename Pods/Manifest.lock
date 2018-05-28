@@ -1,22 +1,26 @@
 PODS:
   - Alamofire (4.7.2)
+  - M13ProgressSuite (1.2.9)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - M13ProgressSuite (~> 1.2)
   - SDWebImage (~> 4.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - M13ProgressSuite
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 011748e1ae45ec04c079238a1d6380835b6da2c9
+PODFILE CHECKSUM: 21916e31817934df964b92b1a59dcdc6aeaaeb82
 
 COCOAPODS: 1.5.3

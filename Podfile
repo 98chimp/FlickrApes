@@ -6,6 +6,7 @@ target 'FlickrApes' do
 
   pod 'Alamofire', '~> 4.4'
   pod 'SDWebImage', '~> 4.2'
+  pod 'M13ProgressSuite', '~> 1.2'
 
   target 'FlickrApesTests' do
     inherit! :search_paths

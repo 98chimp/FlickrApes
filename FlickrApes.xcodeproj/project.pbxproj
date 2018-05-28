@@ -30,6 +30,7 @@
 		EBED7B6A20BC5C8E008F642F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6920BC5C8E008F642F /* Date+Extensions.swift */; };
 		EBED7B6C20BC5EF9008F642F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6B20BC5EF9008F642F /* String+Extensions.swift */; };
 		EBED7B6E20BC74B6008F642F /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6D20BC74B6008F642F /* UIAlertController+Extensions.swift */; };
+		EBED7B7020BCC0B7008F642F /* M13ProgressHUD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED7B6F20BCC0B7008F642F /* M13ProgressHUD+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		EBED7B6920BC5C8E008F642F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		EBED7B6B20BC5EF9008F642F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		EBED7B6D20BC74B6008F642F /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		EBED7B6F20BCC0B7008F642F /* M13ProgressHUD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "M13ProgressHUD+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,11 +195,12 @@
 		EB515C4620BA2C8A00FE383C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EB515C5320BB2D1600FE383C /* UIColor+Extensions.swift */,
-				EB515C5B20BB4F5400FE383C /* UIImage+Extensions.swift */,
 				EBED7B6920BC5C8E008F642F /* Date+Extensions.swift */,
+				EBED7B6F20BCC0B7008F642F /* M13ProgressHUD+Extensions.swift */,
 				EBED7B6B20BC5EF9008F642F /* String+Extensions.swift */,
 				EBED7B6D20BC74B6008F642F /* UIAlertController+Extensions.swift */,
+				EB515C5320BB2D1600FE383C /* UIColor+Extensions.swift */,
+				EB515C5B20BB4F5400FE383C /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -380,11 +383,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlickrApes/Pods-FlickrApes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/M13ProgressSuite/M13ProgressSuite.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13ProgressSuite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +428,7 @@
 				EB515C5220BB289E00FE383C /* MainViewController.swift in Sources */,
 				EBED7B5F20BB68B7008F642F /* DetailTableViewController.swift in Sources */,
 				EBED7B6C20BC5EF9008F642F /* String+Extensions.swift in Sources */,
+				EBED7B7020BCC0B7008F642F /* M13ProgressHUD+Extensions.swift in Sources */,
 				EBED7B6720BC3E64008F642F /* PhotoTableViewCell.swift in Sources */,
 				EB515C4E20BB288200FE383C /* InitialViewController.swift in Sources */,
 				EB515C4C20BB236700FE383C /* Constants.swift in Sources */,

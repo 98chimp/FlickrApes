@@ -7,6 +7,6 @@ Afterwards, you can view the details of each image, save it to your photo galler
 
 Enjoy!
 
-![Wlcome Screen](https://raw.githubusercontent.com/98chimp/FlickrApes/master/image01.png
+![Wlcome Screen](https://user-images.githubusercontent.com/10504371/41520633-8d1871d6-7283-11e8-818a-7bdcfc2cbf6c.png)
 
-![Initial Launch Screen](https://raw.githubusercontent.com/98chimp/FlickrApes/master/image02.png
+![Initial Launch Screen](https://user-images.githubusercontent.com/10504371/41520634-8d309932-7283-11e8-8331-7ab7ad41dfbf.png)

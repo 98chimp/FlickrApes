@@ -7,6 +7,6 @@ Afterwards, you can view the details of each image, save it to your photo galler
 
 Enjoy!
 
-![alt text](https://raw.githubusercontent.com/98chimp/FlickrApes/master/Simulator Screen Shot - iPhone 8 Plus - 2018-06-17 at 22.44.26.png
+![Wlcome Screen](https://raw.githubusercontent.com/98chimp/FlickrApes/master/image01.png
 
-![alt text](https://raw.githubusercontent.com/98chimp/FlickrApes/master/Simulator Screen Shot - iPhone 8 Plus - 2018-06-17 at 22.44.21.png
+![Initial Launch Screen](https://raw.githubusercontent.com/98chimp/FlickrApes/master/image02.png

@@ -13,6 +13,8 @@ import MessageUI
 
 class DetailTableViewController: UITableViewController
 {
+    typealias MiscConstants = Constants.Miscellaneous
+    
     // MARK: - Outlets
     @IBOutlet fileprivate weak var photoImageView: UIImageView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
@@ -28,6 +30,7 @@ class DetailTableViewController: UITableViewController
     fileprivate var selectedImage: UIImage?
     fileprivate var selectedImageData: Data?
     fileprivate let imagePicker = UIImagePickerController()
+    fileprivate let indexOfPhotoLink = 8
     
     // MARK: - Lifecycle
     override func viewDidLoad()
@@ -39,6 +42,14 @@ class DetailTableViewController: UITableViewController
     // MARK: - Helpers
     fileprivate func configureView()
     {
+        titleLabel.text = passedPhoto?.title
+        authorLabel.text = passedPhoto?.author
+        authorIDLabel.text = passedPhoto?.authorID
+        captureDateLabel.text = passedPhoto?.dateTaken?.longString()
+        publishDateLabel.text = passedPhoto?.datePublished?.longString()
+        descriptionLabel.attributedText = passedPhoto?.description?.htmlToAttibutedString()
+        tagsLabel.text = passedPhoto?.tags?.replacingOccurrences(of: MiscConstants.space, with: MiscConstants.tagSeparator)
+        
         guard let mediaLink = passedPhoto?.media?["m"] as? String, let imageURL = URL(string: mediaLink) else { return }
         setSelectedImage(with: imageURL)
         photoImageView.clipsToBounds = true
@@ -46,14 +57,6 @@ class DetailTableViewController: UITableViewController
         photoImageView.sd_setShowActivityIndicatorView(true)
         photoImageView.sd_setIndicatorStyle(.gray)
         photoImageView.sd_setImage(with: imageURL, placeholderImage: #imageLiteral(resourceName: "logo"), options: .cacheMemoryOnly, completed: nil)
-        
-        titleLabel.text = passedPhoto?.title
-        authorLabel.text = passedPhoto?.author
-        authorIDLabel.text = passedPhoto?.authorID
-        captureDateLabel.text = passedPhoto?.dateTaken?.longString()
-        publishDateLabel.text = passedPhoto?.datePublished?.longString()
-        descriptionLabel.attributedText = passedPhoto?.description?.htmlToAttibutedString()
-        tagsLabel.text = passedPhoto?.tags?.replacingOccurrences(of: space, with: tagSeparator)
     }
     
     fileprivate func setSelectedImage(with url: URL)
@@ -159,7 +162,7 @@ class DetailTableViewController: UITableViewController
     {
         
         switch indexPath.row {
-        case 8:
+        case indexOfPhotoLink:
             if let photoLink = passedPhoto?.link { open(photoLink) }
             
         default:

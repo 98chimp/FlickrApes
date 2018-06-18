@@ -14,13 +14,6 @@ func execute(after delay:Double, closure:@escaping ()->())
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
-let photoCellHeight: CGFloat = 100.0
-let emptyString = ""
-let space = " "
-let tagSeparator = "  |  "
-let comma = ", "
-let apes = "apes"
-
 struct Constants
 {
     struct Storyboards
@@ -67,6 +60,17 @@ struct Constants
         static let dateTaken = "date_taken"
         static let datePublished = "published"
         static let tags = "tags"
+    }
+    
+    struct Miscellaneous
+    {
+        static let photoCellHeight: CGFloat = 100.0
+        static let emptyString = ""
+        static let space = " "
+        static let tagSeparator = "  |  "
+        static let comma = ", "
+        static let apes = "apes"
+        static let unknownError = "unknown error"
     }
     
     struct Web

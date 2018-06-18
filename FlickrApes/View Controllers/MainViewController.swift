@@ -11,8 +11,9 @@ import M13ProgressSuite
 
 class MainViewController: UIViewController
 {
-    typealias cells = Constants.Identifiers.Cells
-    typealias segues = Constants.Identifiers.Segues
+    typealias Cells = Constants.Identifiers.Cells
+    typealias Segues = Constants.Identifiers.Segues
+    typealias MiscConstants = Constants.Miscellaneous
 
     // MARK: - Outlets
     @IBOutlet fileprivate weak var photosTableView: UITableView!
@@ -20,31 +21,26 @@ class MainViewController: UIViewController
     // MARK: - Properties
     fileprivate var photos = [FlickrPhoto]()
     fileprivate var selectedIndexPath = IndexPath()
-    fileprivate var hud: M13ProgressHUD?
+    fileprivate var hud = M13ProgressHUD()
     fileprivate let refreshControl = UIRefreshControl()
-    fileprivate var tags = apes
+    fileprivate var tags = MiscConstants.apes
 
     // MARK: - Lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         configureHUD()
-    }
-    
-    override func viewDidAppear(_ animated: Bool)
-    {
-        super.viewDidAppear(animated)
         getPublicPhotos()
     }
     
     // MARK: - Networking
     @objc fileprivate func getPublicPhotos()
     {
-        hud?.show(true)
+        hud.show(true)
         
         WebService.searchPhotos(for: tags) { [weak self] (photos) in
             
-            self?.hud?.hide(true)
+            self?.hud.hide(true)
             if photos.isEmpty
             {
                 self?.present(AlertService.prepareEmptyPhotosResponseAlert(), animated: true, completion: nil)
@@ -61,8 +57,8 @@ class MainViewController: UIViewController
     fileprivate func configureHUD()
     {
         hud = M13ProgressHUD(progressView: M13ProgressViewRing())
-        hud?.configure()
-        view.addSubview(hud!)
+        hud.configure()
+        view.addSubview(hud)
     }
     
     fileprivate func reloadTableView()
@@ -87,7 +83,7 @@ class MainViewController: UIViewController
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == segues.toPhotoDetail
+        if segue.identifier == Segues.toPhotoDetail
         {
             let destinationVC = segue.destination as? DetailTableViewController
             let photoToPass = photos[selectedIndexPath.row]
@@ -116,7 +112,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cells.photoCell, for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.photoCell, for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
         
         let photo = photos[indexPath.row]
         cell.configure(with: photo)
@@ -127,13 +123,13 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         selectedIndexPath = indexPath
-        performSegue(withIdentifier: segues.toPhotoDetail, sender: nil)
+        performSegue(withIdentifier: Segues.toPhotoDetail, sender: nil)
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return photoCellHeight
+        return MiscConstants.photoCellHeight
     }
 }
 
@@ -141,17 +137,17 @@ extension MainViewController: UISearchBarDelegate
 {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-        if searchBar.text == emptyString
+        if searchBar.text == MiscConstants.emptyString
         {
             present(AlertService.prepareEmptySearchTermAlert(), animated: true, completion: nil)
         }
         else
         {
-            guard let tags = searchBar.text?.replacingOccurrences(of: space, with: comma) else { return }
+            guard let tags = searchBar.text?.replacingOccurrences(of: MiscConstants.space, with: MiscConstants.comma) else { return }
             self.tags = tags
             getPublicPhotos()
             view.endEditing(true)
-            searchBar.text = emptyString
+            searchBar.text = MiscConstants.emptyString
         }
     }
 }

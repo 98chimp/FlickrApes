@@ -11,15 +11,15 @@ import Alamofire
 
 class WebService
 {
-    typealias keys = Constants.Web.Keys
-    typealias paths = Constants.Web.Paths
+    typealias Keys = Constants.Web.Keys
+    typealias Paths = Constants.Web.Paths
     
     static func searchPhotos(for tags: String, completion: @escaping (_ photos: [FlickrPhoto]) -> Void)
     {
-        let params = [keys.format:  "json",
-                      keys.tags:    tags]
+        let params = [Keys.format:  "json",
+                      Keys.tags:    tags]
         
-        Alamofire.request(paths.publicPhotos, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
+        Alamofire.request(Paths.publicPhotos, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseString { (response) in
             
             var flickrPhotos = [FlickrPhoto]()
             

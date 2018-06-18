@@ -10,7 +10,7 @@ import Foundation
 
 class SessionService
 {
-    fileprivate typealias userDefaultKeys = Constants.UserDefaultKeys
+    fileprivate typealias UserDefaultKeys = Constants.UserDefaultKeys
     
     // MARK: - Properties
     static let shared = SessionService()
@@ -18,14 +18,14 @@ class SessionService
     // MARK: - User Defaults
     func recordFirstLaunch()
     {
-        UserDefaults.standard.set(true, forKey: userDefaultKeys.hasLaunchedBefore)
+        UserDefaults.standard.set(true, forKey: UserDefaultKeys.hasLaunchedBefore)
         UserDefaults.standard.synchronize()
     }
     
     func isFirstLaunch() -> Bool
     {
         let keys = UserDefaults.standard.dictionaryRepresentation().keys
-        let firstLaunchKey = userDefaultKeys.hasLaunchedBefore
+        let firstLaunchKey = UserDefaultKeys.hasLaunchedBefore
         let isFirstLaunch = !keys.contains(firstLaunchKey)
         
         return isFirstLaunch
